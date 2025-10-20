@@ -623,10 +623,10 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+**Abhijeet Suryavanshi**
+- GitHub: [abhiforgithonly](https://github.com/abhiforgithonly)
+- LinkedIn: [Abhijeet Suryavanshi](www.linkedin.com/in/abhijee-suryavanshi)
+- Email: abhijeets20032000@gmail.com
 
 ## 🙏 Acknowledgments
 
@@ -639,15 +639,13 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support
 
 If you encounter any issues or have questions:
-
-1. Check the [Troubleshooting](#-debugging--troubleshooting) section
-2. Watch the [Video Walkthrough](link-to-video) for visual guidance
-3. Open an issue on GitHub with:
+1. Watch the [Video Walkthrough](https://www.loom.com/share/d8a4a77d696f47b1b51274e1189de837) for visual guidance
+2. Open an issue on GitHub with:
    - Clear description of the problem
    - Steps to reproduce
    - Screenshots/logs if applicable
    - Device and OS information
-4. Contact: your.email@example.com
+3. Contact: abhijeets20032000@gmail.com
 
 ## 🎯 Project Goal
 
