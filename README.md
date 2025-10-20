@@ -151,7 +151,7 @@ Starting Flask server on http://0.0.0.0:5000
 ```
 
 Find your local IP:
-- **Windows**: `ipconfig` → Look for "IPv4 Address"
+- **Windows**: `ipconfig` → Look for "IPv4 Address" on Command Prompt
 - **Mac/Linux**: `ifconfig` → Look for "inet" under your WiFi interface
 - Example: `192.168.1.38`
 
