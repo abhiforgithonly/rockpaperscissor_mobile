@@ -123,8 +123,8 @@ Follow the complete setup instructions below.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/rock-paper-scissors-ai.git
-cd rock-paper-scissors-ai
+git clone https://github.com/abhiforgithonly/rockpaperscissor_mobile.git
+cd rockpaperscissor_mobile
 ```
 
 ### 2. Backend Setup
