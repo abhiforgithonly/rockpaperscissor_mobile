@@ -222,8 +222,8 @@ rock-paper-scissors-ai/
 4. **Tap "📸 Play"**: A 3-2-1 countdown will start
 5. **Hold Still**: Camera captures your gesture at countdown end
 6. **See Results**: View your move, computer's move, and winner with animation
-7. **Play Again**: Tap "📸 Play" for another round
-8. **Reset Scores**: Tap "🔄 Reset" to clear all scores
+7. **Reset Scores**: Tap "🔄 Reset" to clear all scores
+8. **Play Again**: Tap "📸 Play" for another round
 
 ### Pro Tips:
 - Use **good lighting** for better detection
