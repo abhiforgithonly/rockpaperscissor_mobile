@@ -94,16 +94,119 @@ The app uses a Flask backend with **MediaPipe Hands** for real-time hand gesture
 
 ## 📋 Prerequisites
 
+### System Requirements
+
+#### Required Software Versions
+
+**⚠️ IMPORTANT: Version Requirements**
+
+- **Python 3.9 or higher** (Latest stable version recommended: Python 3.11+)
+  - MediaPipe and OpenCV require Python 3.9+ for optimal compatibility
+  - Check version: `python --version` or `python3 --version`
+  - Download latest: [python.org/downloads](https://www.python.org/downloads/)
+  
+- **Node.js 18 LTS or higher** (Latest LTS recommended: Node.js 20+)
+  - Expo SDK 54 requires Node.js 18+
+  - Check version: `node --version`
+  - Download latest LTS: [nodejs.org](https://nodejs.org/)
+  
+- **npm 9+ or yarn 1.22+** (comes with Node.js)
+  - Check version: `npm --version`
+
+**Why Latest Versions Matter:**
+- **Python 3.11+**: Better performance, improved error messages, and full MediaPipe support
+- **Node.js 18+**: Required for Expo SDK 54, improved module resolution, and better M1/M2 Mac compatibility
+- **Security**: Latest versions include critical security patches
+- **Compatibility**: Ensures all dependencies install correctly without conflicts
+
+#### Version Verification
+
+Run these commands to check your versions:
+
+```bash
+# Check Python version (should be 3.9+)
+python --version
+# or on some systems:
+python3 --version
+
+# Check Node.js version (should be 18+)
+node --version
+
+# Check npm version (should be 9+)
+npm --version
+
+# Check pip version
+pip --version
+# or
+pip3 --version
+```
+
+**Example Output:**
+```
+Python 3.11.5
+Node v20.10.0
+npm 10.2.3
+pip 23.3.1
+```
+
 ### For Mobile Testing (Quick Start)
-- **Smartphone** (iOS or Android)
-- **Expo Go app** installed
+- **Smartphone** (iOS 13+ or Android 8.0+)
+- **Expo Go app** installed (latest version from app store)
 - **Same WiFi network** as the backend server
 
 ### For Full Development Setup
-- Node.js 16+ and npm
-- Expo CLI (`npm install -g expo-cli`)
-- Python 3.8+
-- pip package manager
+- **Python 3.9+** (3.11+ recommended) with pip
+- **Node.js 18 LTS+** (20 LTS recommended) with npm
+- **Expo CLI** (`npm install -g expo-cli`)
+- **Git** for version control
+- **Text Editor/IDE** (VS Code, PyCharm, etc.)
+- **Stable internet connection** for initial dependency installation
+
+### Optional but Recommended
+- **Python virtual environment tool** (venv, virtualenv, or conda)
+- **watchman** for better file watching on macOS/Linux: `brew install watchman`
+- **Android Studio** (for Android emulator testing)
+- **Xcode** (for iOS simulator testing - macOS only)
+
+### Updating to Latest Versions
+
+**Update Python:**
+```bash
+# macOS (using Homebrew)
+brew update
+brew upgrade python
+
+# Windows (download from python.org or use Microsoft Store)
+# Linux (Ubuntu/Debian)
+sudo apt update
+sudo apt install python3.11
+
+# Verify installation
+python3 --version
+```
+
+**Update Node.js:**
+```bash
+# Using nvm (Node Version Manager) - Recommended
+nvm install --lts
+nvm use --lts
+
+# macOS (using Homebrew)
+brew update
+brew upgrade node
+
+# Windows (download installer from nodejs.org)
+# Or use nvm-windows: https://github.com/coreybutler/nvm-windows
+
+# Verify installation
+node --version
+npm --version
+```
+
+**Update npm:**
+```bash
+npm install -g npm@latest
+```
 
 ## 🚀 Quick Start (Using QR Code)
 
@@ -120,6 +223,23 @@ Follow the complete setup instructions below.
 
 ## 🔧 Complete Setup Instructions
 
+### 0. Verify Prerequisites
+
+Before starting, ensure you have the correct versions:
+
+```bash
+# Check Python version (must be 3.9+, preferably 3.11+)
+python3 --version
+
+# Check Node.js version (must be 18+, preferably 20+)
+node --version
+
+# Check npm version
+npm --version
+```
+
+If any version is outdated, refer to the "Updating to Latest Versions" section above.
+
 ### 1. Clone the Repository
 
 ```bash
@@ -133,8 +253,11 @@ cd rockpaperscissor_mobile
 cd backend
 
 # Create virtual environment (recommended)
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Upgrade pip to latest version
+pip install --upgrade pip
 
 # Install dependencies
 pip install -r requirements.txt
@@ -152,7 +275,7 @@ Starting Flask server on http://0.0.0.0:5000
 
 Find your local IP:
 - **Windows**: `ipconfig` → Look for "IPv4 Address" on Command Prompt
-- **Mac/Linux**: `ifconfig` → Look for "inet" under your WiFi interface
+- **Mac/Linux**: `ifconfig` or `ip addr` → Look for "inet" under your WiFi interface
 - Example: `192.168.1.38`
 
 ### 3. Frontend Setup
@@ -234,9 +357,52 @@ rock-paper-scissors-ai/
 
 ## 🐛 Debugging & Troubleshooting
 
+### Version-Related Issues
+
+**"Module not found" or "Cannot find module" errors:**
+```bash
+# Update Node.js to latest LTS
+nvm install --lts
+nvm use --lts
+
+# Clear npm cache and reinstall
+npm cache clean --force
+rm -rf node_modules package-lock.json
+npm install --legacy-peer-deps
+```
+
+**Python dependency installation failures:**
+```bash
+# Upgrade pip first
+pip install --upgrade pip
+
+# If MediaPipe fails to install, ensure Python 3.9+
+python3 --version
+
+# Try installing with verbose output to see errors
+pip install -r requirements.txt --verbose
+
+# On macOS M1/M2, you might need:
+pip install --upgrade pip setuptools wheel
+```
+
+**"Python version not supported" error:**
+- MediaPipe requires Python 3.9+
+- Download latest Python from [python.org](https://www.python.org/downloads/)
+- After installing, create new virtual environment with correct version
+
+**Expo CLI compatibility issues:**
+```bash
+# Update Expo CLI globally
+npm install -g expo-cli@latest
+
+# Or use npx to always use latest
+npx expo start
+```
+
 ### QR Code Connection Issues
 - **Cannot Scan QR Code**: 
-  - Ensure Expo Go is installed and updated
+  - Ensure Expo Go is installed and updated to latest version
   - Try using the manual connection: In Expo Go, tap "Enter URL manually" and type the URL shown in terminal
 - **Connection Timeout**:
   - Verify both devices are on **same WiFi network**
@@ -304,8 +470,13 @@ npm install --legacy-peer-deps
 # Clear Expo cache
 npx expo start -c
 
-# Restart backend
-# Kill Python process (Ctrl+C) and restart:
+# Restart backend with clean environment
+deactivate  # Exit virtual environment
+rm -rf venv  # Remove old venv
+python3 -m venv venv  # Create new venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
 python app.py
 
 # Check if backend is running
@@ -314,11 +485,13 @@ curl http://localhost:5000
 ```
 
 ### Still Having Issues?
-1. Check all prerequisites are installed
-2. Verify WiFi network is the same for both devices
-3. Try restarting both backend and frontend
-4. Check terminal for error messages
-5. Ensure no VPN is active (can block local network access)
+1. **Verify all version requirements** (Python 3.9+, Node.js 18+)
+2. Check all prerequisites are installed correctly
+3. Verify WiFi network is the same for both devices
+4. Try restarting both backend and frontend
+5. Check terminal for error messages
+6. Ensure no VPN is active (can block local network access)
+7. Update all tools to latest versions: `npm update -g`, `pip install --upgrade pip`
 
 ## 🔧 Configuration Options
 
@@ -581,13 +754,15 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support
 
 If you encounter any issues or have questions:
-1. Watch the [Video Walkthrough](https://www.loom.com/share/d8a4a77d696f47b1b51274e1189de837) for visual guidance
-2. Open an issue on GitHub with:
+1. **Check version requirements** first (Python 3.9+, Node.js 18+)
+2. Watch the [Video Walkthrough](https://www.loom.com/share/d8a4a77d696f47b1b51274e1189de837) for visual guidance
+3. Open an issue on GitHub with:
    - Clear description of the problem
    - Steps to reproduce
    - Screenshots/logs if applicable
    - Device and OS information
-3. Contact: abhijeets20032000@gmail.com
+   - **Python and Node.js versions** (`python --version`, `node --version`)
+4. Contact: abhijeets20032000@gmail.com
 
 ## 🎯 Project Goal
 
@@ -603,17 +778,24 @@ This project was created as a take-home challenge to demonstrate:
 
 ## 🚀 Quick Start Summary
 
+**System Requirements:**
+- ✅ Python 3.9+ (3.11+ recommended)
+- ✅ Node.js 18 LTS+ (20 LTS recommended)
+- ✅ npm 9+ (comes with Node.js)
+
 **For Testers:**
 1. Install Expo Go → Scan QR Code → Play! ✨
 
 **For Developers:**
-1. Clone repo
-2. Start backend: `python app.py`
-3. Update API endpoint in `api.js`
-4. Start frontend: `npx expo start`
-5. Scan QR code with Expo Go
+1. **Verify versions**: `python3 --version` and `node --version`
+2. Clone repo
+3. Start backend: `python app.py`
+4. Update API endpoint in `api.js`
+5. Start frontend: `npx expo start`
+6. Scan QR code with Expo Go
 
 **Requirements:**
+- Latest Python (3.9+) and Node.js (18+) versions
 - Same WiFi network for phone and computer
 - Camera permissions enabled
 - Good lighting for gesture detection
